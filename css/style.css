@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables de DA */
+:root {
+    /* Fonds */
+    --bg-main: #0b0d10;        /* presque noir, légèrement bleuté */
+    --bg-secondary: #141821;  /* pierre / nuit */
+    --bg-panel: #1b2030;
+
+    /* Textes */
+    --text-main: #e6e6e6;
+    --text-muted: #a0a4b8;
+
+    /* Lumière / magie */
+    --accent-ligth: #cfcfcf;   /* lumière */
+
+
+    /* Ombres */
+    --shadow-soft: 0 0 20px rgba(0, 0, 0, 0.6);
+    --shadow-hard: 0 0 40px rgba(0, 0, 0, 0.9);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Arial', sans-serif;
+    background:
+        radial-gradient(
+            circle at top,
+            #1a1f2e 0%,
+            var(--bg-main) 60%
+        );
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+
+header {
+    background: linear-gradient(
+        to bottom,
+        #1b2030,
+        #0e111a
+    );
+    box-shadow: var(--shadow-hard);
+    padding: 0.5rem 2.5rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 72px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent-ligth);
+    text-shadow: 0 0 8px rgba(207, 207, 207, 0.6);
+}
+
+.logo {
+    font-family: sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+}
+
+.hero,
+.content,
+.member {
+    background: linear-gradient(
+        145deg,
+        #1b2030,
+        #121625
+    );
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before,
+.member::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at top left,
+        rgba(109, 169, 255, 0.08),
+        transparent 60%
+    );
+    pointer-events: none;
+}
+
+.hero,
+.member {
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.hero:hover,
+.member:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+
+.sources a {
+    color: var(--accent-magic);
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.sources a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(109, 169, 255, 0.8);
+}
+
+img {
+    image-rendering: pixelated;
+}
+
+
+.github-btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+
+    font-family: sans-serif;
+    font-size: 0.95rem;
+
+    color: var(--accent-ligth);
+    background: linear-gradient(
+        145deg,
+        #1f2436,
+        #121625
+    );
+
+    border: 1px solid rgba(207, 207, 207, 0.35);
+
+    box-shadow:
+        inset 0 0 10px rgba(201, 168, 106, 0.05),
+        0 0 20px rgba(0, 0, 0, 0.6);
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+.github-btn:hover {
+    color: #ffffff;
+
+    background: linear-gradient(
+        145deg,
+        #2a2f45,
+        #161a2b
+    );
+
+    box-shadow:
+        inset 0 0 15px rgba(201, 168, 106, 0.15),
+        0 0 25px rgba(207, 207, 207, 0.4);
+
+    transform: translateY(-2px);
+}
+
+.github-btn:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+}
+
+
+
+/* Sections */
+main {
+    flex: 1;
+    padding: 2rem;
+}
+
+.hero {
+    margin-bottom: 3rem;
+}
+
+h2, h3 {
+    font-family: sans-serif;
+}
+
+.hero h2 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.content h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Team */
+.team {
+    display: flex;
+    gap: 2rem;
+}
+
+.member {
+    background-color: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: 5px;
+    width: 200px;
+}
+
+/* Sources */
+.sources {
+    list-style: none;
+}
+
+.sources li {
+    margin-bottom: 0.5rem;
+}
+
+.sources a {
+    color: var(--accent);
+}
+
+.pixel {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.7rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--bg-secondary);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+}
