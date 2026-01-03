@@ -1,0 +1,60 @@
+/* Header et navbar */
+header {
+    background: linear-gradient(
+        to bottom,
+        #1b2030,
+        #0e111a
+    );
+    box-shadow: var(--shadow-hard);
+    padding: 0.5rem 2.5rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 72px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent-ligth);
+    text-shadow: 0 0 8px rgba(207, 207, 207, 0.6);
+}
+
+.logo {
+    font-family: sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+}
+
+/* Main */
+main {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--bg-secondary);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+}

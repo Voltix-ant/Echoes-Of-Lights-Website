@@ -1,0 +1,23 @@
+.sources {
+    list-style: none;
+}
+
+.sources li {
+    margin-bottom: 0.5rem;
+}
+
+.sources a {
+    color: var(--light-soft);
+    text-decoration: none;
+}
+
+.sources a:hover {
+    color: var(--light-main);
+    text-shadow: 0 0 10px var(--light-soft);
+}
+
+.member:hover .avatar {
+    box-shadow:
+        0 0 25px rgba(207, 207, 207, 0.5),
+        inset 0 0 12px rgba(201, 201, 201, 0.25);
+}
