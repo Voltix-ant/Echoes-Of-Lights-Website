@@ -73,6 +73,10 @@
     box-shadow: var(--shadow-soft);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
 }
 
 .hero::before {
