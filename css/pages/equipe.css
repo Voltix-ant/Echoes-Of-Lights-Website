@@ -1,5 +1,7 @@
 .team {
     display: flex;
+    flex-wrap: wrap;                 /* autorise le retour à la ligne */
+    justify-content: center;         /* centre les cartes */
     gap: 2rem;
 }
 
@@ -36,7 +38,7 @@
     background-color: var(--bg-secondary);
     padding: 1rem;
     border-radius: 5px;
-    width: 200px;
+    width: 600px;
     flex: 1;
 }
 
@@ -64,4 +66,45 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+@media (max-width: 1300px) {
+    .team {
+        flex-direction: column;   /* toutes les cartes empilées */
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .member {
+        display: flex;            /* flex horizontal pour l’avatar/texte */
+        align-items: flex-start;
+        align-items: center;
+        gap: 2rem;                /* espace entre avatar+nom et texte */
+        width: 90%;
+        max-width: 900px;
+        padding: 2rem;
+        text-align: left;         /* texte à gauche de la carte */
+        height: 400px;
+    }
+
+    .member .avatar {
+        flex-shrink: 0;           /* empêcher l’avatar de rétrécir */
+        display: flex;
+        flex-direction: column;   /* avatar et nom empilés */
+        align-items: center;      /* centré verticalement */
+        gap: 0.5rem;
+    }
+
+    .member h3 {
+        margin-top: 0.5rem;       /* espace entre avatar et nom */
+        margin-bottom: 0;
+    }
+
+    .member p {
+        flex: 1;                  /* texte prend tout l’espace restant */
+    }
+    .left {
+        min-width: 200px;
+        text-align: center;
+    }
 }

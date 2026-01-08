@@ -1,3 +1,19 @@
+.page-banner {
+    display: flex;
+    justify-content: center;  /* centre horizontalement */
+    align-items: center;      /* optionnel si tu veux centrer verticalement */
+    overflow: hidden;
+    padding: 1rem 0;          /* petit espace au-dessus et en-dessous */
+}
+
+.page-banner img {
+    max-width: 100%;          /* jamais plus large que le conteneur */
+    max-height: 50vh;         /* jamais plus haut que 50% de la fenêtre */
+    height: auto;             /* conserve les proportions */
+    width: auto;              /* taille originale si possible */
+    display: block;
+}
+
 .hero {
     margin-bottom: 3rem;
 }
@@ -10,4 +26,27 @@
 .content h3 {
     margin-top: 2rem;
     margin-bottom: 0.5rem;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;      /* aligne verticalement */
+    gap: 30px;                /* espace entre texte et image */
+}
+
+.hero-content p {
+    flex: 1;                  /* le texte prend la place restante */
+}
+
+.hero-image {
+    max-width: 200px;
+    height: auto;
+    border-radius: 85px;
+}
+
+@media (max-width: 700px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
 }
