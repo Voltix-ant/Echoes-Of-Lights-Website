@@ -33,6 +33,7 @@ nav a {
 nav a:hover {
     color: var(--accent-ligth);
     text-shadow: 0 0 8px rgba(207, 207, 207, 0.6);
+    text-decoration: none;
 }
 
 .logo {
