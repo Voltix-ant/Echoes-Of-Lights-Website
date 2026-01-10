@@ -36,6 +36,8 @@
         <img src="assets/images/darkbanner.png">
     </div>
 
+    <div class="banner-spacer"></div>
+
     <section class="hero">
     <h2>Présentation du jeu</h2>
 
@@ -84,6 +86,75 @@
 <footer>
     <p>2026 - Echoes Of Lights</p>
 </footer>
+
+<script>
+    const banner = document.querySelector('.page-banner');
+    const bannerOverlay = banner;
+    
+    // Calculate scroll progress and apply effects
+    function handleScroll() {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        
+        // Calculate progress (0 to 1) based on scroll position
+        // Start darkening after 20% scroll, fully dark at 60%, fade out by 100%
+        const darkenStart = windowHeight * 0.2;
+        const darkenEnd = windowHeight * 0.6;
+        const fadeStart = windowHeight * 0.6;
+        const fadeEnd = windowHeight * 1.0;
+        
+        let darkenProgress = 0;
+        let fadeProgress = 0;
+        
+        if (scrollY >= darkenStart) {
+            // Darkening effect
+            darkenProgress = Math.min(1, (scrollY - darkenStart) / (darkenEnd - darkenStart));
+        }
+        
+        if (scrollY >= fadeStart) {
+            // Fading effect
+            fadeProgress = Math.min(1, (scrollY - fadeStart) / (fadeEnd - fadeStart));
+        }
+        
+        // Apply darkening (0 to 0.7 opacity)
+        const overlayOpacity = darkenProgress * 0.7;
+        bannerOverlay.style.setProperty('--overlay-opacity', overlayOpacity);
+        bannerOverlay.querySelector('::after') || bannerOverlay;
+        
+        // Apply fading (1 to 0 opacity)
+        const bannerOpacity = 1 - fadeProgress;
+        banner.style.opacity = bannerOpacity;
+        
+        // Update the ::after pseudo-element overlay
+        const style = document.createElement('style');
+        style.id = 'banner-overlay-style';
+        const existingStyle = document.getElementById('banner-overlay-style');
+        if (existingStyle) {
+            existingStyle.remove();
+        }
+        style.textContent = `
+            .page-banner::after {
+                background: rgba(0, 0, 0, ${overlayOpacity}) !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    // Throttle scroll events for better performance
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+    
+    // Initial call
+    handleScroll();
+</script>
 
 </body>
 </html>

@@ -7,6 +7,8 @@ header {
     );
     box-shadow: var(--shadow-hard);
     padding: 0.5rem 2.5rem;
+    position: relative;
+    z-index: 10;
 }
 
 nav {
