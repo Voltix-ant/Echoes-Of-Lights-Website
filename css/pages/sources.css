@@ -21,3 +21,100 @@
         0 0 25px rgba(207, 207, 207, 0.5),
         inset 0 0 12px rgba(201, 201, 201, 0.25);
 }
+
+.resource-category {
+    margin-top: 1rem;
+    border-radius: 6px;
+    background: linear-gradient(145deg, #1b2030, #121625);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+}
+
+.resource-category summary {
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    list-style: none;
+
+    color: var(--text-main);
+    font-weight: 500;
+
+    position: relative;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Supprimer la flèche par défaut (Chrome/Firefox) */
+.resource-category summary::-webkit-details-marker {
+    display: none;
+}
+
+.resource-category summary::after {
+    content: "▸";
+    position: absolute;
+    right: 1.25rem;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.6;
+}
+
+/* Quand ouvert */
+.resource-category[open] summary::after {
+    transform: rotate(90deg);
+    opacity: 1;
+}
+
+.resource-category ul {
+    list-style: none;
+    padding: 0 1.25rem 1rem;
+}
+
+.resource-category li {
+    margin-top: 0.5rem;
+}
+
+.resource-category a {
+    color: var(--light-soft);
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.resource-category a:hover {
+    color: var(--light-main);
+    text-shadow: 0 0 8px var(--light-soft);
+}
+    
+.resource-category summary {
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        padding-left 0.3s ease;
+}
+
+.resource-category[open] summary {
+    background: radial-gradient(
+        circle at left,
+        var(--light-faint),
+        transparent 60%
+        );
+    padding-left: 1.5rem;
+    box-shadow: inset 0 0 12px var(--light-faint);
+}
+
+.resource-category summary::after {
+    content: "▸";
+    position: absolute;
+    right: 1.25rem;
+    font-size: 1.3rem;
+    line-height: 1;
+    opacity: 0.6;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.resource-category[open] summary::after {
+    transform: rotate(90deg) scale(1.05);
+    opacity: 1;
+}
+
+.resource-category[open] ul {
+    transition-delay: 0.05s;
+}

@@ -34,36 +34,112 @@
 <main>
     <section class="hero">
         <h2>Sources et liens</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Vous retrouverez sur cette page des liens vers les différentes ressources et 
+            documentation que nous avons utilisé pour la conception de notre jeu.
+        </p>
     </section>
 
-    <section class="content">
+    <!-- <section class="content">
         <ul class="sources">
             <li><a href="#" target="_blank" rel="noopener noreferrer">Lien GitHub</a></li>
             <li><a href="#" target="_blank" rel="noopener noreferrer">Documentation</a></li>
             <li><a href="#" target="_blank" rel="noopener noreferrer">Ressources externes</a></li>
         </ul>
-    </section>
+    </section> -->
     <section class="content">
         <h3>Librairies pythons</h3>
         <p>Voici les différentes librairies python utilisées dans notre jeu :</p>
         <ul>
-            <li><a href="https://www.pygame.org/docs/">Pygame</a> : Cette librairie permet de gérer 
+            <li><a href="https://www.pygame.org/docs/" target="_blank">Pygame</a> : Cette librairie permet de gérer 
                 l'affichage et l'audio du jeu.</li>
-            <li><a href="https://docs.python.org/3/library/threading.html">Threading</a> : Cette librairie 
+            <li><a href="https://docs.python.org/3/library/threading.html" target="_blank">Threading</a> : Cette librairie 
                 permet de séparer les différentes boucles nécessazire au bon fonctionnement du jeu dans des
                 conteneurs différents afin que celles-ci puissent tourner en même temps.</li>
-            <li><a href="https://aiortc.readthedocs.io/en/latest/">AioRTC</a> :  Cette librairie permet
+            <li><a href="https://aiortc.readthedocs.io/en/latest/" target="_blank">AioRTC</a> :  Cette librairie permet
                 la connexion P2P entre les deux joueurs grâce à la technologie WebRTC.</li>
-            <li><a href="https://requests.readthedocs.io/en/latest/">Requests</a> : Il s'agit d'une libraire 
+            <li><a href="https://requests.readthedocs.io/en/latest/" target="_blank">Requests</a> : Il s'agit d'une libraire 
                 permettant de faire des requête HTTP, qu'on utilise notamment pour contacter l'API REST de la base
                 de donnée firebase.</li>
             <li>D'autres librairies natives de python sont également utilisé, tel que 
-                <a href="https://docs.python.org/3/library/random.html">Random</a> pour 
-                la génération des codes de partie, <a href="https://docs.python.org/3/library/time.html">Time</a>
-                pour créer des délais lors de l'éxécution, <a href="https://docs.python.org/3/library/asyncio.html">asyncio</a>
+                <a href="https://docs.python.org/3/library/random.html" target="_blank">Random</a> pour 
+                la génération des codes de partie, <a href="https://docs.python.org/3/library/time.html" target="_blank">Time</a>
+                pour créer des délais lors de l'éxécution, <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a>
                 pour la création de fonctions asynchrones...</li>
         </ul>
+    </section>
+
+    <section class="content">
+        <h2>Assets</h2>
+        <p>Nous souhaitons avoir un jeu vidéo le plus agréables visuellement possible. 
+            N'etant pas des artistes, nous avons décidé d'opter pour le pixel art, qui est un
+            style plus simple à mettre en œuvre et de recourrir à l'IA générative pour nous facilter
+            la tâche.
+        </p>
+        <p>Voici donc les différents outils utilisés pour générer nos assets :</p>
+        <ul>
+            <li><a href="https://www.pixellab.ai/" target="_blank">Pixellab.ai</a></li>
+            <li><a href="https://fr.musicful.ai/ai-music-generator/">Musicful.ai</a></li>
+        </ul>
+    </section>
+
+    <section class="content">
+        <h3>Ressources externes</h3>
+        <p>Voici différents articles et ressources qui nous ont aidé à développer notre jeu.</p>
+
+        <details class="resource-category">
+            <summary>Pygame</summary>
+            <ul>
+
+                <li><a href="https://people.montefiore.uliege.be/mathy/ppi/flappy.html" target="_blank">
+                    Flappy - Documentation</a></li>
+            </ul>
+        </details>
+
+        <details class="resource-category">
+            <summary>Moteur isométrique</summary>
+            <ul>
+                <li><a href="https://www.reddit.com/r/gamedev/comments/v2duc7/how_isometric_coordinates_work_in_2d_games/?tl=fr" target="_blank">
+                    Comment fonctionnent les coordonnées isométriques dans les jeux 2D - Reddit</a></li>
+                <li><a href="https://www.reddit.com/r/gamemaker/comments/8k9fqq/intro_to_isometric_projection/?tl=fr" target="_blank">
+                    Introduction à la projection isométrique - Reddit</a></li>
+                <li><a href="https://www.youtube.com/watch?v=2Ucv9XM0pFI" target="_blank">
+                    Comment créer des ensembles de tuiles isométriques en pixel art - YouTube</a></li>
+                <li><a href="https://fr.wikipedia.org/wiki/Isom%C3%A9trie" target="_blank">
+                    isométrie - Wikipedia</a></li>
+            </ul>
+        </details>
+
+        <details class="resource-category">
+            <summary>Réseau et Multijoueur</summary>
+            <ul>
+                <li><a href="https://code.tutsplus.com/building-a-peer-to-peer-multiplayer-networked-game--gamedev-10074t" target="_blank">
+                    Building a Peer-to-Peer Multiplayer Networked Game | Envato Tuts+</a></li>
+                <li><a href="https://dev.to/whitphx/python-webrtc-basics-with-aiortc-48id" target="_blank">
+                    Python WebRTC basics with aiortc - DEV Community</a></li>
+            </ul>
+        </details>
+
+        <details class="resource-category">
+            <summary>Menu</summary>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=iJ7DDqaGbG4" target="_blank">
+                    Faire un MAIN MENU en PYTHON avec PYGAME - YouTube</a></li>
+                <li><a href="https://www.reddit.com/r/pygame/comments/1grzi4g" target="_blank">
+                    Is it possible to make a working volume slider? - Reddit</a></li>
+            </ul>
+        </details>
+
+        <details class="resource-category">
+            <summary>IA</summary>
+            <ul>
+                <li><a href="https://fr.wikipedia.org/wiki/Algorithme_A*" target="_blank">
+                    Algorithme A* - Wikipedia</a></li>
+                <li><a href="https://www.datacamp.com/fr/tutorial/a-star-algorithm" target="_blank">
+                    L'algorithme A* : Un guide complet</a></li>
+                <li><a href="https://youtu.be/iMRJzA8BBIg?si=c0nFR3fhLia1vOxr" target="_blank">
+                    Le Pathfinding avec A* - YouTube</a></li>
+            </ul>
+        </details>
     </section>
 </main>
 
