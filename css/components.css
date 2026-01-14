@@ -32,11 +32,11 @@
 }
 
 /* Bouton GitHub */
-.github-btn {
+.btn {
     padding: 0.6rem 1.2rem;
     border-radius: 6px;
     font-size: 0.95rem;
-
+    text-decoration: none;
     color: var(--light-main);
     background: linear-gradient(145deg, #1f2436, #121625);
 
@@ -49,17 +49,19 @@
                 transform 0.3s ease;
 }
 
-.github-btn:hover {
+.btn:hover {
     background: linear-gradient(145deg, #2a2f45, #161a2b);
     box-shadow: inset 0 0 15px rgba(255,255,255,0.15),
                 0 0 25px var(--light-soft);
     transform: translateY(-2px);
+    text-decoration: none;
 }
 
-.github-btn:focus-visible {
+.btn:focus-visible {
     outline: 2px solid var(--accent-gold);
     outline-offset: 2px;
 }
+
 
 .hero,
 .content {
