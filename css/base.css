@@ -50,3 +50,10 @@ a:hover {
     text-decoration: underline;
     color: rgb(192, 195, 202);
 }
+
+@font-face {
+    font-family: 'Darksouls'; /* Nom de la police pour l'utiliser */
+    src: url('../assets/fonts/Darksoul.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
