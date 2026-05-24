@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Echoes Of Lights - Musiques</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+
+    <style>
+        .music-container {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 20px;
+        }
+
+        .track {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            padding: 15px 20px;
+            margin-bottom: 15px;
+
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+
+        .track-info {
+            flex: 1;
+        }
+
+        .track-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .progress-container {
+            width: 200px;
+            height: 6px;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h1 class="logo">Echoes Of Lights</h1>
+        <ul>
+            <li><a href="index.html">Le jeu</a></li>
+            <li><a href="lore.html">Le lore</a></li>
+            <li><a href="equipe.html">L'équipe</a></li>
+            <li><a href="musique.html">Musiques</a></li>
+            <li><a href="sources.html">Sources</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="music-container">
+
+    <h2>Tracklist</h2>
+
+    <div id="tracklist"></div>
+
+</main>
+
+<footer>
+    <p>2026 - Echoes Of Lights</p>
+</footer>
+
+<script>
+const tracks = [
+    {
+        title: "Shadowveil - Guillaume",
+        src: "assets/audio/shadowveil.mp3"
+    },
+    {
+        title: "Emberlight - Guillaume",
+        src: "assets/audio/emberlight.mp3"
+    },
+    {
+        title: "Puzzle Mood",
+        src: "assets/audio/puzzle_mood.mp3"
+    }
+];
+
+const tracklist = document.getElementById("tracklist");
+let currentAudio = null;
+let currentProgress = null;
+
+tracks.forEach((track, index) => {
+
+    const audio = new Audio(track.src);
+
+    const container = document.createElement("div");
+    container.className = "track";
+
+    container.innerHTML = `
+        <div class="track-info">
+            <div class="track-title">${track.title}</div>
+            <div class="progress-container">
+                <div class="progress"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button>${"▶"}</button>
+        </div>
+    `;
+
+    const button = container.querySelector("button");
+    const progress = container.querySelector(".progress");
+
+    button.addEventListener("click", () => {
+
+        // stop autre musique
+        if (currentAudio && currentAudio !== audio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            if (currentProgress) currentProgress.style.width = "0%";
+        }
+
+        // play / pause toggle
+        if (audio.paused) {
+            audio.play();
+            button.textContent = "⏸";
+
+            currentAudio = audio;
+            currentProgress = progress;
+        } else {
+            audio.pause();
+            button.textContent = "▶";
+        }
+    });
+
+    audio.addEventListener("timeupdate", () => {
+        const percent = (audio.currentTime / audio.duration) * 100;
+        progress.style.width = percent + "%";
+    });
+
+    audio.addEventListener("ended", () => {
+        button.textContent = "▶";
+        progress.style.width = "0%";
+    });
+
+    tracklist.appendChild(container);
+});
+</script>
+
+</body>
+</html>
