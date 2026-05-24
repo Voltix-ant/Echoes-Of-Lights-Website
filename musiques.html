@@ -63,6 +63,15 @@
             width: 0%;
             background: #ffffff;
         }
+
+        .reset-btn {
+            background: #333;
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background: #555;
+        }
     </style>
 </head>
 
@@ -110,10 +119,11 @@ const tracks = [
 ];
 
 const tracklist = document.getElementById("tracklist");
+
 let currentAudio = null;
 let currentProgress = null;
 
-tracks.forEach((track, index) => {
+tracks.forEach(track => {
 
     const audio = new Audio(track.src);
 
@@ -129,14 +139,17 @@ tracks.forEach((track, index) => {
         </div>
 
         <div class="controls">
-            <button>${"▶"}</button>
+            <button class="play-btn">▶</button>
+            <button class="reset-btn">↺</button>
         </div>
     `;
 
-    const button = container.querySelector("button");
+    const playBtn = container.querySelector(".play-btn");
+    const resetBtn = container.querySelector(".reset-btn");
     const progress = container.querySelector(".progress");
 
-    button.addEventListener("click", () => {
+    // ▶ PLAY / PAUSE
+    playBtn.addEventListener("click", () => {
 
         // stop autre musique
         if (currentAudio && currentAudio !== audio) {
@@ -145,26 +158,42 @@ tracks.forEach((track, index) => {
             if (currentProgress) currentProgress.style.width = "0%";
         }
 
-        // play / pause toggle
         if (audio.paused) {
             audio.play();
-            button.textContent = "⏸";
+            playBtn.textContent = "⏸";
 
             currentAudio = audio;
             currentProgress = progress;
         } else {
             audio.pause();
-            button.textContent = "▶";
+            playBtn.textContent = "▶";
         }
     });
 
+    // ↺ RESET
+    resetBtn.addEventListener("click", () => {
+
+        audio.pause();
+        audio.currentTime = 0;
+
+        progress.style.width = "0%";
+        playBtn.textContent = "▶";
+
+        if (currentAudio === audio) {
+            currentAudio = null;
+            currentProgress = null;
+        }
+    });
+
+    // PROGRESS BAR
     audio.addEventListener("timeupdate", () => {
         const percent = (audio.currentTime / audio.duration) * 100;
         progress.style.width = percent + "%";
     });
 
+    // END
     audio.addEventListener("ended", () => {
-        button.textContent = "▶";
+        playBtn.textContent = "▶";
         progress.style.width = "0%";
     });
 
