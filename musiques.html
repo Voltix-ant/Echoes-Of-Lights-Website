@@ -9,22 +9,35 @@
     <link rel="stylesheet" href="css/components.css">
 
     <style>
+
         .music-container {
             max-width: 900px;
             margin: 80px auto;
             padding: 20px;
         }
 
+        .music-category {
+            margin-top: 50px;
+            margin-bottom: 20px;
+
+            font-size: 2rem;
+
+            border-left: 4px solid white;
+            padding-left: 15px;
+        }
+
         .track {
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             gap: 20px;
 
             padding: 15px 20px;
             margin-bottom: 15px;
 
             background: rgba(255,255,255,0.05);
+
             border-radius: 10px;
         }
 
@@ -45,15 +58,25 @@
 
         button {
             padding: 8px 12px;
+
             border: none;
             border-radius: 6px;
+
             cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
         }
 
         .progress-container {
-            width: 200px;
+            width: 250px;
             height: 6px;
+
             background: #333;
+
             border-radius: 10px;
             overflow: hidden;
         }
@@ -61,7 +84,8 @@
         .progress {
             height: 100%;
             width: 0%;
-            background: #ffffff;
+
+            background: white;
         }
 
         .reset-btn {
@@ -72,6 +96,7 @@
         .reset-btn:hover {
             background: #555;
         }
+
     </style>
 </head>
 
@@ -80,34 +105,36 @@
 <header>
     <nav>
         <h1 class="logo">Echoes Of Lights</h1>
+
         <ul>
             <li><a href="index.html">Le jeu</a></li>
             <li><a href="lore.html">Le lore</a></li>
             <li><a href="musiques.html">Musiques</a></li>
             <li><a href="equipe.html">L'équipe</a></li>
             <li><a href="sources.html">Sources</a></li>
+
             <li>
                 <a href="https://github.com/SpiR8t/Projet-Jeu-Epita"
                    class="btn"
-                   target="_blank"
-                   title="Se rendre sur le répo GitHub du projet">
+                   target="_blank">
                    GitHub
                 </a>
             </li>
+
             <li>
                 <a href="./assets/documents/Rapport_de_soutenance-2-J3D-17_03_2026.pdf"
                    class="btn"
-                   target="_blank"
-                   title="Télécharger le rapport de la seconde soutenance (PDF)">
+                   target="_blank">
                     Rapport 2
                 </a>
             </li>
         </ul>
     </nav>
 </header>
+
 <main class="music-container">
 
-    <h2>Tracklist</h2>
+    <h1>Tracklist</h1>
 
     <div id="tracklist"></div>
 
@@ -118,35 +145,80 @@
 </footer>
 
 <script>
-const tracks = [
+
+const categories = [
+
     {
-        title: "Guillaume - Shadowveil",
-        src: "assets/audio/shadowveil.mp3"
+        name: "Menu / Crédits",
+
+        tracks: [
+            {
+                title: "Valentin Goussot - Echoes of Lights",
+                src: "assets/audio/echoesOfLight.mp3"
+            }
+        ]
     },
+
     {
-        title: "Guillaume - Emberlight",
-        src: "assets/audio/emberlight.mp3"
+        name: "Jeu",
+
+        tracks: [
+            {
+                title: "Valentin Goussot - Lost",
+                src: "assets/audio/lost.mp3"
+            },
+
+            {
+                title: "Lennon Hutton - Abandoned Village",
+                src: "assets/audio/Abandoned Village.mp3"
+            },
+
+            {
+                title: "August Wilhelmsson - Departure - Ending (Rework)",
+                src: "assets/audio/Ending.mp3"
+            },
+
+            {
+                title: "Laura Platt - Echolocation (Rework)",
+                src: "assets/audio/echolation.mp3"
+            },
+
+            {
+                title: "They Dream By Day - Left Unseen (Rework)",
+                src: "assets/audio/LeftUnseen.mp3"
+            },
+
+            {
+                title: "Luba Hilman - Meridian (Rework)",
+                src: "assets/audio/Meridian.mp3"
+            },
+
+            {
+                title: "DEX 1200 - Zone of Deception (Rework)",
+                src: "assets/audio/dex1200.mp3"
+            },
+            {
+                title: "Guillaume - Shadowveil",
+                src: "assets/audio/shadowveil.mp3"
+            },
+
+            {
+                title: "Guillaume - Emberlight",
+                src: "assets/audio/emberlight.mp3"
+            }
+        ]
     },
+
     {
-        title: "Valentin Goussot - Echoes of light",
-        src: "assets/audio/echoesOfLight.mp3"
-    },
-    {
-        title: "Lennon Hutton - Abandoned Village",
-        src: "assets/audio/Abandoned Village.mp3"
-    },
-    {
-        title: "Luba Hilman - Meridian (Rework)",
-        src: "assets/audio/Meridian.mp3"
-    },
-    {
-        title: "Laura Platt - Echolocation (Rework)",
-        src: "assets/audio/echolation.mp3"
-    },
-    {
-        title: "Dian Shuai - Tempest Rondo (Rework)",
-        src: "assets/audio/Tempest Rondo.mp3"
-    },
+        name: "Boss",
+
+        tracks: [
+            {
+                title: "Dian Shuai - Tempest Rondo (Rework)",
+                src: "assets/audio/Tempest Rondo.mp3"
+            }
+        ]
+    }
 ];
 
 const tracklist = document.getElementById("tracklist");
@@ -154,82 +226,124 @@ const tracklist = document.getElementById("tracklist");
 let currentAudio = null;
 let currentProgress = null;
 
-tracks.forEach(track => {
+categories.forEach(category => {
 
-    const audio = new Audio(track.src);
+    // TITRE DE SECTION
+    const categoryTitle = document.createElement("h2");
 
-    const container = document.createElement("div");
-    container.className = "track";
+    categoryTitle.textContent = category.name;
+    categoryTitle.className = "music-category";
 
-    container.innerHTML = `
-        <div class="track-info">
-            <div class="track-title">${track.title}</div>
-            <div class="progress-container">
-                <div class="progress"></div>
+    tracklist.appendChild(categoryTitle);
+
+    // MUSIQUES
+    category.tracks.forEach(track => {
+
+        const audio = new Audio(track.src);
+
+        const container = document.createElement("div");
+        container.className = "track";
+
+        container.innerHTML = `
+            <div class="track-info">
+
+                <div class="track-title">
+                    ${track.title}
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress"></div>
+                </div>
+
             </div>
-        </div>
 
-        <div class="controls">
-            <button class="play-btn">▶</button>
-            <button class="reset-btn">↺</button>
-        </div>
-    `;
+            <div class="controls">
 
-    const playBtn = container.querySelector(".play-btn");
-    const resetBtn = container.querySelector(".reset-btn");
-    const progress = container.querySelector(".progress");
+                <button class="play-btn">▶</button>
 
-    // ▶ PLAY / PAUSE
-    playBtn.addEventListener("click", () => {
+                <button class="reset-btn">↺</button>
 
-        // stop autre musique
-        if (currentAudio && currentAudio !== audio) {
-            currentAudio.pause();
-            currentAudio.currentTime = 0;
-            if (currentProgress) currentProgress.style.width = "0%";
-        }
+            </div>
+        `;
 
-        if (audio.paused) {
-            audio.play();
-            playBtn.textContent = "⏸";
+        const playBtn = container.querySelector(".play-btn");
+        const resetBtn = container.querySelector(".reset-btn");
+        const progress = container.querySelector(".progress");
 
-            currentAudio = audio;
-            currentProgress = progress;
-        } else {
+        // PLAY / PAUSE
+        playBtn.addEventListener("click", () => {
+
+            // stop autre musique
+            if (currentAudio && currentAudio !== audio) {
+
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+
+                if (currentProgress) {
+                    currentProgress.style.width = "0%";
+                }
+
+                document.querySelectorAll(".play-btn")
+                    .forEach(btn => {
+                        btn.textContent = "▶";
+                    });
+            }
+
+            if (audio.paused) {
+
+                audio.play();
+
+                playBtn.textContent = "⏸";
+
+                currentAudio = audio;
+                currentProgress = progress;
+
+            } else {
+
+                audio.pause();
+
+                playBtn.textContent = "▶";
+            }
+        });
+
+        // RESET
+        resetBtn.addEventListener("click", () => {
+
             audio.pause();
+            audio.currentTime = 0;
+
+            progress.style.width = "0%";
+
             playBtn.textContent = "▶";
-        }
+
+            if (currentAudio === audio) {
+
+                currentAudio = null;
+                currentProgress = null;
+            }
+        });
+
+        // BARRE DE PROGRESSION
+        audio.addEventListener("timeupdate", () => {
+
+            const percent =
+                (audio.currentTime / audio.duration) * 100;
+
+            progress.style.width = percent + "%";
+        });
+
+        // FIN
+        audio.addEventListener("ended", () => {
+
+            playBtn.textContent = "▶";
+
+            progress.style.width = "0%";
+        });
+
+        tracklist.appendChild(container);
     });
-
-    // ↺ RESET
-    resetBtn.addEventListener("click", () => {
-
-        audio.pause();
-        audio.currentTime = 0;
-
-        progress.style.width = "0%";
-        playBtn.textContent = "▶";
-
-        if (currentAudio === audio) {
-            currentAudio = null;
-            currentProgress = null;
-        }
-    });
-
-    // PROGRESS BAR
-    audio.addEventListener("timeupdate", () => {
-        const percent = (audio.currentTime / audio.duration) * 100;
-        progress.style.width = percent + "%";
-    });
-
-    // END
-    audio.addEventListener("ended", () => {
-        playBtn.textContent = "▶";
-        progress.style.width = "0%";
-    });
-
-    tracklist.appendChild(container);
 });
+
 </script>
 
 </body>
