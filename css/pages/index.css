@@ -12,6 +12,17 @@
     transition: opacity 0.3s ease;
 }
 
+.hero h2 {
+    font-size: 3.2rem;
+    margin-bottom: 30px;
+}
+
+.content h3 {
+    font-size: 2.2rem;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
 .page-banner::after {
     content: "";
     position: absolute;

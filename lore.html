@@ -2,40 +2,123 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Echoes Of Lights - Lore Complet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echoes Of Lights - Lore</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/pages/index.css">
+
     <style>
-        /* Styles simples pour le spoiler */
-        .spoiler {
-            background-color: #1a1a1a;
-            color: #1a1a1a;
-            padding: 10px;
-            border-radius: 5px;
+        .lore-hero-title {
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            text-shadow: 0 0 18px rgba(255, 230, 160, 0.35);
+        }
+
+        .lore-intro {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .lore-section-title {
+            font-size: 2.1rem;
+            margin-top: 50px;
+            margin-bottom: 18px;
+            color: #f4df9b;
+            text-shadow: 0 0 12px rgba(244, 223, 155, 0.25);
+        }
+
+        .lore-subtitle {
+            font-size: 1.45rem;
+            margin-top: 28px;
+            margin-bottom: 10px;
+            color: #e8e0c8;
+        }
+
+        .lore-quote {
+            margin: 30px 0;
+            padding: 22px 28px;
+            border-left: 4px solid #f4df9b;
+            background: rgba(255, 255, 255, 0.04);
+            font-style: italic;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        .lore-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .lore-card {
+            padding: 22px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .lore-card h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #f4df9b;
+            font-size: 1.25rem;
+        }
+
+        .lore-card p {
+            margin-bottom: 0;
+        }
+
+        .lore-timeline {
+            margin: 25px 0;
+            padding-left: 22px;
+            border-left: 2px solid rgba(244, 223, 155, 0.45);
+        }
+
+        .lore-timeline-item {
+            margin-bottom: 24px;
+            padding-left: 18px;
+        }
+
+        .lore-timeline-item h4 {
+            margin: 0 0 8px 0;
+            color: #f4df9b;
+        }
+
+        .spoiler-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 18px;
+            border-radius: 8px;
+            background: rgba(244, 223, 155, 0.12);
+            border: 1px solid rgba(244, 223, 155, 0.35);
+            color: #f4df9b;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: 0.25s ease;
+            font-weight: bold;
         }
-        .spoiler:hover {
-            color: #ffffff;
+
+        .spoiler-button:hover {
+            background: rgba(244, 223, 155, 0.22);
+            transform: translateY(-2px);
         }
+
         .spoiler-content {
             display: none;
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #111;
-            border-radius: 5px;
+            margin-top: 15px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
     </style>
+
     <script>
         function toggleSpoiler(id) {
             const content = document.getElementById(id);
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
+            content.style.display = content.style.display === "block" ? "none" : "block";
         }
     </script>
 </head>
@@ -72,16 +155,19 @@
 
 <main>
     <div class="page-banner">
-        <img src="assets/images/lorebanner.png" alt="Bannière du lore">
+        <img src="assets/images/lorebanner.png" alt="Bannière du lore de Echoes Of Lights">
     </div>
 
     <section class="hero">
-        <h2>Le Lore Complet d'Equinoxa</h2>
+        <h2 class="lore-hero-title">Le Lore d'Equinoxa</h2>
 
         <div class="hero-content">
-            <p>
-                Découvrez l’univers d'<strong>Equinoxa</strong>, un monde régi par l’équilibre entre la 
-                <strong>Lumière</strong> et l’<strong>Ombre</strong>, où la magie, la nature et le destin des êtres vivants dépendent de cette harmonie fragile.
+            <p class="lore-intro">
+                Dans <strong>Echoes Of Lights</strong>, l’aventure prend place au cœur d’<strong>Equinoxa</strong>,
+                un monde ancien où la Lumière et l’Ombre ne sont pas des ennemies, mais deux forces nécessaires.
+                Leur équilibre maintient la magie, les cycles naturels et la mémoire du monde. Mais depuis la
+                Fracture du Prisme Originel, cet équilibre s’effondre, et le Sanctuaire d’Equinox appelle ses
+                derniers espoirs : Aeden et Lyra.
             </p>
 
             <img src="assets/images/prisme.png"
@@ -91,115 +177,227 @@
     </section>
 
     <section class="content">
-        <h3>Principe Fondamental — L’Équilibre Originel</h3>
+        <h3 class="lore-section-title">Univers — Equinoxa</h3>
         <p>
-            Equinoxa est un monde régi par l’équilibre entre deux forces primordiales : 
-            <strong>Lumière</strong> (création, ordre, mémoire) et 
-            <strong>Ombre</strong> (transformation, mouvement, oubli). Aucune n’est bonne ou mauvaise. 
-            Lorsque l’une domine, le monde se déforme. L’existence même d’Equinoxa dépend de cet équilibre.
+            Equinoxa est un monde régi par une loi fondamentale : aucune force ne doit dominer l’autre.
+            La Lumière représente la création, l’ordre et la mémoire. L’Ombre incarne la transformation,
+            le mouvement et l’oubli. Elles ne sont ni bonnes ni mauvaises : elles sont complémentaires.
+        </p>
+        <p>
+            Lorsque la Lumière devient trop forte, le monde se fige dans une perfection immobile.
+            Lorsque l’Ombre prend le dessus, tout devient instable, mouvant et incontrôlable.
+            L’existence d’Equinoxa dépend donc d’un équilibre fragile, maintenu pendant des siècles par une relique ancienne.
         </p>
 
-        <h3>Le Prisme Originel</h3>
+        <div class="lore-grid">
+            <div class="lore-card">
+                <h4>La Lumière</h4>
+                <p>Force de création, d’ordre et de mémoire. Elle stabilise le monde, révèle les vérités cachées et purifie la corruption.</p>
+            </div>
+            <div class="lore-card">
+                <h4>L’Ombre</h4>
+                <p>Force de transformation, de mouvement et d’oubli. Elle permet au monde d’évoluer, de changer et de survivre au passage du temps.</p>
+            </div>
+        </div>
+
+        <h3 class="lore-section-title">Le Prisme Originel</h3>
         <p>
-            Pour maintenir cette harmonie, les Anciens ont créé le <strong>Prisme Originel</strong>, 
-            un cœur d’énergie consciente diffusant l’équilibre à travers le monde. Tant qu’il était intact :
+            Pour préserver l’harmonie du monde, les Anciens créèrent le <strong>Prisme Originel</strong>.
+            Il ne s’agissait pas d’une arme, ni d’une divinité, mais d’un cœur d’énergie consciente capable de diffuser
+            l’équilibre entre Lumière et Ombre dans tout Equinoxa.
         </p>
-        <ul>
-            <li>la magie restait stable,</li>
-            <li>les cycles naturels étaient préservés,</li>
-            <li>le monde prospérait.</li>
-        </ul>
         <p>
-            Le Prisme était protégé dans le <em>Sanctuaire d’Equinox</em>, un lieu hors du temps.
+            Tant que le Prisme restait intact, la magie demeurait stable, les saisons suivaient leur cours
+            et les civilisations pouvaient prospérer. Le Prisme fut placé au centre du <strong>Sanctuaire d’Equinox</strong>,
+            un lieu hors du temps conçu pour le protéger des convoitises extérieures.
         </p>
 
-        <h3>La Fracture</h3>
+        <h3 class="lore-section-title">La Fracture</h3>
         <p>
-            Un événement appelé <strong>la Fracture</strong> mit fin à cet âge d’équilibre. 
-            Le Prisme Originel fut brisé en quatre artefacts :
+            Cet âge d’équilibre prit fin lors d’un événement appelé <strong>la Fracture</strong>. Le Prisme Originel fut brisé,
+            dispersant son énergie en quatre artefacts sacrés. Les raisons exactes de cette catastrophe ont disparu :
+            certaines archives ont été détruites, d’autres semblent avoir été volontairement effacées.
         </p>
-        <ul>
-            <li>Gemme du Halo</li>
-            <li>Clé du Crépuscule</li>
-            <li>Cœur d’Aube</li>
-            <li>Œil Nocturne</li>
-        </ul>
         <p>
-            Les causes exactes sont perdues ou volontairement effacées, mais les conséquences sont visibles : certaines régions sont figées dans une lumière instable, d’autres envahies par l’obscurité mouvante, et la magie est dangereusement imprévisible.
+            Ce qui reste, ce sont les conséquences. Certaines régions d’Equinoxa sont désormais prisonnières d’une lumière
+            instable, tandis que d’autres sont envahies par une obscurité vivante. La magie est devenue dangereuse,
+            imprévisible, et le Sanctuaire d’Equinox n’est plus qu’une légende murmurée.
         </p>
 
-        <h3>Les Incarnés</h3>
+        <div class="lore-grid">
+            <div class="lore-card">
+                <h4>La Gemme du Halo</h4>
+                <p>Un fragment lié à la lumière protectrice, capable de révéler ce qui a été caché par la corruption.</p>
+            </div>
+            <div class="lore-card">
+                <h4>La Clef du Crépuscule</h4>
+                <p>Un artefact situé entre deux états, ouvrant les passages entre lumière mourante et ombre naissante.</p>
+            </div>
+            <div class="lore-card">
+                <h4>Le Cœur d’Aube</h4>
+                <p>Un fragment chargé d’énergie nouvelle, symbole de renaissance et de retour possible à l’équilibre.</p>
+            </div>
+            <div class="lore-card">
+                <h4>L’Œil Nocturne</h4>
+                <p>Un artefact lié aux ténèbres conscientes, capable de voir ce que la lumière ne peut atteindre.</p>
+            </div>
+        </div>
+
+        <h3 class="lore-section-title">Les Incarnés</h3>
         <p>
-            Lorsque l’effondrement devient inévitable, le Prisme peut accomplir un dernier acte : s’incarner. 
-            Les <strong>Incarnés</strong> sont des fragments de l’équilibre devenus humains, sans souvenir de leur origine. 
-            <strong>Aeden</strong> et <strong>Lyra</strong> font partie de ces incarnations. 
-            Ils ne sont pas des élus, mais une nécessité.
+            Lorsque l’effondrement du monde devient inévitable, le Prisme peut accomplir un dernier acte :
+            s’incarner. Les <strong>Incarnés</strong> sont des fragments de l’équilibre devenus humains,
+            envoyés dans le monde sans souvenir de leur véritable nature.
+        </p>
+        <p>
+            <strong>Aeden</strong> et <strong>Lyra</strong> ne sont donc pas de simples héros choisis par le destin.
+            Ils sont une réponse du Prisme à la destruction d’Equinoxa. Ils sont nés pour retrouver les fragments,
+            comprendre leur origine et décider du futur du monde.
         </p>
 
-        <h3>L’histoire du jeu — Prologue</h3>
+        <h3 class="lore-section-title">Prologue — Le Réveil dans les Ténèbres</h3>
         <p>
-            Un fracas sourd. Une pierre qui glisse. Puis le silence. Deux silhouettes se relèvent dans un sanctuaire plongé dans l’obscurité : 
-            <strong>Aeden</strong>, jeune homme athlétique, et <strong>Lyra</strong>, femme vive et déterminée. 
-            Ils ne se connaissent pas, ignorent leur présence ici, et sentent une force oppressante autour d’eux. Sur les murs, une inscription ancienne : 
-            <em>« Quand la lumière est brisée et l’ombre déchaînée, seuls deux cœurs unis peuvent restaurer l’équilibre. »</em>
+            Un fracas sourd. Une pierre qui glisse. Puis le silence.
+            Deux silhouettes se relèvent au centre d’un immense sanctuaire plongé dans une obscurité presque totale.
+            Aeden, un jeune homme à la carrure athlétique, et Lyra, une femme vive et déterminée,
+            ne se connaissent pas. Ils ignorent comment ils sont arrivés ici.
+        </p>
+        <p>
+            Autour d’eux, les murs semblent respirer. Le donjon donne l’impression de les observer.
+            Au sol, quatre chemins s’étendent vers des zones inconnues. Sur la pierre ancienne,
+            une inscription à moitié effacée apparaît.
         </p>
 
-        <h3>Le Sanctuaire Brisé</h3>
+        <div class="lore-quote">
+            « Quand la lumière est brisée et l’ombre déchaînée, seuls deux cœurs unis peuvent restaurer l’équilibre. »
+        </div>
+
+        <h3 class="lore-section-title">Le Sanctuaire Brisé</h3>
         <p>
-            Ancien lieu du Prisme, le sanctuaire est maintenant plongé dans l’obscurité. Les quatre artefacts manquent, et une force malveillante s’est éveillée dans ses profondeurs.
+            Le lieu dans lequel Aeden et Lyra se réveillent n’est autre que l’ancien <strong>Sanctuaire d’Equinox</strong>.
+            Autrefois, il protégeait le Prisme Originel et maintenait l’équilibre entre les forces primordiales.
+            Désormais, ses couloirs sont fissurés, ses mécanismes sont corrompus et ses salles sont envahies par les ténèbres.
+        </p>
+        <p>
+            Privé de l’énergie du Prisme, le sanctuaire s’est refermé sur lui-même.
+            Une présence ancienne s’est éveillée dans ses profondeurs, transformant ce lieu sacré en épreuve.
+            Chaque salle semble tester les deux héros, comme si le donjon cherchait à savoir s’ils sont dignes de continuer.
         </p>
 
-        <h3>Les Quatre Voies</h3>
+        <h3 class="lore-section-title">Les Quatre Voies</h3>
         <p>
-            Les héros doivent parcourir quatre chemins, chacun représentant un fragment du Prisme. Chaque zone s’éclaire progressivement à mesure qu’ils résolvent des énigmes coopératives nécessitant leurs pouvoirs complémentaires.
+            Pour atteindre le cœur du sanctuaire, les deux personnages doivent parcourir quatre branches.
+            Chacune mène à un artefact du Prisme Originel et possède ses propres pièges, ennemis et énigmes.
+            À mesure qu’Aeden et Lyra progressent, les zones traversées s’éclairent peu à peu,
+            comme si le sanctuaire retrouvait une partie de sa mémoire.
         </p>
 
-        <h3>Découverte des pouvoirs</h3>
-        <ul>
-            <li><strong>Aeden — Héritier de la Lumière :</strong> projette des faisceaux lumineux, active des mécanismes solaires, purifie des zones, crée des plateformes de lumière.</li>
-            <li><strong>Lyra — Enfant de l’Ombre :</strong> manipule les ténèbres, traverse l’obscurité, crée des ponts d’ombre, neutralise des lumières, déclenche des mécanismes nocturnes.</li>
-        </ul>
-
-        <h3>Énigmes et coopération</h3>
+        <h3 class="lore-section-title">Les Pouvoirs d’Aeden et Lyra</h3>
+        <div class="lore-grid">
+            <div class="lore-card">
+                <h4>Aeden — Héritier de la Lumière</h4>
+                <p>
+                    Aeden peut projeter des faisceaux lumineux, activer des mécanismes solaires,
+                    purifier certaines zones corrompues et créer des plateformes de lumière.
+                    Son pouvoir révèle, stabilise et protège.
+                </p>
+            </div>
+            <div class="lore-card">
+                <h4>Lyra — Enfant de l’Ombre</h4>
+                <p>
+                    Lyra manipule les ténèbres, traverse l’obscurité, crée des ponts d’ombre,
+                    neutralise certaines lumières et déclenche des mécanismes nocturnes.
+                    Son pouvoir transforme, dissimule et ouvre des chemins impossibles.
+                </p>
+            </div>
+        </div>
         <p>
-            Les voies exigent une coopération étroite : leviers liés à la lumière et l’ombre, couloirs vivants réagissant aux présences des héros, zones où l’un ne peut avancer qu’avec l’autre, et ennemis vulnérables à l’une ou l’autre des forces.
+            Leurs capacités opposées ne fonctionnent pleinement que lorsqu’elles sont utilisées ensemble.
+            Plus ils avancent, plus ils comprennent qu’ils ne possèdent pas simplement des pouvoirs :
+            ils sont eux-mêmes les deux moitiés de ce que fut autrefois le Prisme Originel.
         </p>
 
-        <h3>L’Ascension vers le Cœur</h3>
+        <h3 class="lore-section-title">Les Énigmes du Sanctuaire</h3>
         <p>
-            Après avoir récupéré les quatre artefacts, le sanctuaire s’illumine. Une voix résonne dans leurs esprits : 
-            <em>« Revenez à votre origine. Le jugement vous attend. »</em> 
-            Au centre, un immense portail révèle la salle du boss final.
+            Le Sanctuaire d’Equinox ne se traverse pas seul. Les puzzles forcent les deux joueurs à coopérer :
+            certains leviers modifient la lumière d’une salle, certains chemins ne se révèlent que dans l’ombre,
+            et certains mécanismes demandent aux deux personnages d’agir en même temps.
+        </p>
+        <p>
+            Les ennemis eux-mêmes reflètent cet équilibre brisé. Certains résistent aux attaques lumineuses,
+            d’autres ne peuvent être vaincus que grâce à l’ombre. Chaque affrontement rappelle aux joueurs que la victoire
+            ne vient pas d’une force qui domine l’autre, mais de leur complémentarité.
         </p>
 
-        <h3>Le Boss Final — Le Gardien Déchu</h3>
-        <p>
-            Ancien protecteur du Prisme, désormais corrompu par l’Ombre, il attaque tout être porteur de lumière ou d’ombre. Aeden et Lyra doivent combiner leurs pouvoirs pour :
-        </p>
-        <ul>
-            <li>Immobiliser le gardien avec l’Ombre,</li>
-            <li>Purifier ses points faibles avec la Lumière,</li>
-            <li>Reconstituer le Prisme morceau par morceau pendant le combat.</li>
-        </ul>
+        <h3 class="lore-section-title">Chronologie de l’aventure</h3>
+        <div class="lore-timeline">
+            <div class="lore-timeline-item">
+                <h4>1. Le réveil</h4>
+                <p>Aeden et Lyra se réveillent sans souvenirs au centre du Sanctuaire d’Equinox.</p>
+            </div>
+            <div class="lore-timeline-item">
+                <h4>2. L’exploration des quatre voies</h4>
+                <p>Ils récupèrent les fragments du Prisme en traversant des zones corrompues par le déséquilibre.</p>
+            </div>
+            <div class="lore-timeline-item">
+                <h4>3. Le retour au cœur</h4>
+                <p>Une fois les artefacts réunis, le sanctuaire s’illumine et ouvre l’accès à sa salle centrale.</p>
+            </div>
+            <div class="lore-timeline-item">
+                <h4>4. Le jugement</h4>
+                <p>Les héros affrontent le Gardien Déchu et découvrent la vérité sur leur existence.</p>
+            </div>
+        </div>
 
-        <h3>Révélation Finale</h3>
+        <h3 class="lore-section-title">Le Gardien Déchu</h3>
         <p>
-            Lorsque le boss s’effondre, le Prisme reformé projette une lumière aveuglante. Les héros voient qu’ils sont les fragments incarnés du Prisme Originel. Ils doivent se reconnecter au Prisme et disparaître en tant qu’humains… mais une option alternative existe :
+            Le boss final est l’ancien protecteur du Prisme. Autrefois fait de lumière pure,
+            il fut corrompu par l’Ombre après la Fracture. Sa mission était de défendre l’équilibre,
+            mais sa raison s’est brisée avec le Prisme.
+        </p>
+        <p>
+            Désormais, il attaque tout être porteur de lumière ou d’ombre. Dans son esprit déformé,
+            reformer le Prisme représente un danger trop grand. Il préfère empêcher le retour de l’équilibre
+            plutôt que risquer une nouvelle catastrophe.
+        </p>
+        <p>
+            Pour le vaincre, Aeden et Lyra doivent combiner leurs pouvoirs comme jamais auparavant :
+            immobiliser le Gardien avec l’Ombre, purifier ses points faibles avec la Lumière,
+            puis reconstituer le Prisme morceau par morceau pendant le combat.
         </p>
 
-        <div class="spoiler" onclick="toggleSpoiler('spoiler-end')">
-            ⚠️ Spoiler : Choix des fins
+        <h3 class="lore-section-title">Révélation Finale — La Vérité des Incarnés</h3>
+        <p>
+            Lorsque le Gardien Déchu s’effondre, le Prisme reformé s’active et projette une lumière aveuglante.
+            Aeden et Lyra voient alors des fragments de mémoire : ils n’étaient pas des humains ordinaires.
+            Ils sont les deux fragments incarnés du Prisme Originel, envoyés sous forme humaine pour retrouver
+            les artefacts et restaurer l’équilibre.
+        </p>
+        <p>
+            Ils ne sont pas arrivés dans le sanctuaire par hasard. Ils sont le sanctuaire.
+            Ses dernières protections. Ses derniers espoirs.
+        </p>
+
+        <div class="spoiler-button" onclick="toggleSpoiler('spoiler-end')">
+            Afficher le choix final
         </div>
         <div class="spoiler-content" id="spoiler-end">
+            <p>
+                Pour que le monde survive, Aeden et Lyra doivent se reconnecter au Prisme et disparaître en tant qu’humains.
+                Mais le Prisme leur laisse une dernière liberté : choisir leur fin.
+            </p>
             <ul>
-                <li>Se sacrifier pour redevenir énergie et restaurer l’équilibre.</li>
-                <li>Refuser le sacrifice, rester humains, mais condamner le monde à sombrer.</li>
+                <li><strong>Se sacrifier :</strong> redevenir énergie pure et restaurer l’équilibre d’Equinoxa.</li>
+                <li><strong>Refuser :</strong> rester humains, mais laisser le monde sombrer peu à peu dans le déséquilibre.</li>
             </ul>
         </div>
 
-        <h3>Résumé</h3>
+        <h3 class="lore-section-title">Résumé</h3>
         <p>
-            Deux êtres amnésiques découvrent qu’ils sont les avatars de la Lumière et de l’Ombre, piégés dans un sanctuaire mourant. Ensemble, ils doivent retrouver quatre artefacts, restaurer le Prisme Originel et affronter la vérité sur leur existence pour sauver Equinoxa.
+            <strong>Echoes Of Lights</strong> raconte l’histoire de deux êtres amnésiques, nés de forces opposées,
+            qui découvrent peu à peu qu’ils sont les fragments vivants d’un pouvoir ancien. À travers les quatre voies
+            du Sanctuaire d’Equinox, ils devront coopérer, récupérer les artefacts du Prisme Originel,
+            affronter le Gardien Déchu et choisir entre leur humanité ou le salut d’Equinoxa.
         </p>
     </section>
 </main>
